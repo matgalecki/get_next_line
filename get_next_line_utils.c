@@ -20,3 +20,14 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	return (0);
+}

@@ -21,4 +21,5 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s);
 #endif

@@ -31,3 +31,21 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
+
+char	*ft_strdup(const char *s)
+{
+	char	*dest;
+	size_t	i;
+
+	dest = (char *)malloc((ft_strlen(s) + 1) * sizeof(*s));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

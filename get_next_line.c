@@ -13,6 +13,12 @@
 
 char	*get_next_line(int fd)
 {
+	static char	*lchr;
+	char		*fnl;
+	char		*buf;
+	char		*tmp;
+
+	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 }
 
 char *read_file (int fd)

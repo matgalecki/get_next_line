@@ -11,6 +11,22 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
+char	*fill_line(int fd, char *buf, char *lchr)
+{
+	char	*tmp;
+	int		len;
+
+	len = 1;
+	while (len)
+	{
+		len = read(fd, buf, BUFFER_SIZE);
+		if (len <= 0 && !lchr)
+			return (NULL);
+		if (!lchr)
+			lchr = ft_strdup("");
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*lchr;
@@ -21,6 +37,7 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 }
 
+/* 
 char *read_file (int fd)
 {
 	int	i;
@@ -37,8 +54,9 @@ char *read_file (int fd)
 
 char *_set_line(char *line_buffer)
 {
-	
 }
+*/
+
 /* 
 #include <stdio.h>
 int	main()

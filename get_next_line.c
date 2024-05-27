@@ -24,6 +24,12 @@ char	*fill_line(int fd, char *buf, char *lchr)
 			return (NULL);
 		if (!lchr)
 			lchr = ft_strdup("");
+		tmp = lchr;
+		if (!len)
+			break;
+		buf[len] = '\0';
+		lchr = ft_strjoin(tmp, buf);
+		free(tmp);
 	}
 }
 

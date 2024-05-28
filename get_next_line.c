@@ -26,11 +26,18 @@ char	*fill_line(int fd, char *buf, char *lchr)
 			lchr = ft_strdup("");
 		tmp = lchr;
 		if (!len)
-			break;
+			break ;
 		buf[len] = '\0';
 		lchr = ft_strjoin(tmp, buf);
 		free(tmp);
+		if (ft_strchr(buf, '\n'))
+			break ;
 	}
+	return (lchr);
+}
+
+char	*set_lchr(char *buf, char **lchr)
+{
 }
 
 char	*get_next_line(int fd)

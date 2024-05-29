@@ -48,27 +48,18 @@ char	*get_next_line(int fd)
 	char		*tmp;
 
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-}
-
-/* 
-char *read_file (int fd)
-{
-	int	i;
-	char	*tmp;
-
-	tmp = (char *)malloc(sizeof(int) * (BUFFER_SIZE) + 1);
-	if (tmp == NULL)
+	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		(void *)lchr;
+		free(buf);
 		return (NULL);
-	i = read(fd, tmp, BUFFER_SIZE);
-	if (i <= 0)
-		return (NULL);
-	return (tmp);
+	}
+	else
+		tmp = fill_line(fd, buf, lchr);
+	fnl = set_lchr(tmp, &lchr);
+	free(buf);
+	return (fnl);
 }
-
-char *_set_line(char *line_buffer)
-{
-}
-*/
 
 /* 
 #include <stdio.h>

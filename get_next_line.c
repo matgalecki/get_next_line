@@ -38,6 +38,29 @@ char	*fill_line(int fd, char *buf, char *lchr)
 
 char	*set_lchr(char *buf, char **lchr)
 {
+	size_t	i;
+	char	*tmp;
+
+	i = 0;
+	if (buf == 0)
+		return (NULL);
+	while (buf[i] != '\n' && buf[i] != '\0')
+		i++;
+	if (buf[i] == '\0')
+	{
+		*lchr = NULL;
+		return (buf);
+	}
+	else
+	{
+		if (i + 1 != ft_strlen(buf))
+			*lchr = ft_substr(buf, i + 1, ft_strlen(buf) - (i + 1));
+		else
+			*lchr = NULL;
+	}
+	tmp = ft_substr(buf, 0, i + 1);
+	free(buf);
+	return (tmp);
 }
 
 char	*get_next_line(int fd)
@@ -50,7 +73,7 @@ char	*get_next_line(int fd)
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		(void *)lchr;
+		(void)lchr;
 		free(buf);
 		return (NULL);
 	}
@@ -72,12 +95,12 @@ int	main()
 	
 	while(1)
 	{
-		tmp = get_next_line(fd);
-		if (tmp == NULL)
-			break;
-		printf("%s\n", tmp);
-		free(tmp);
-		tmp = NULL;
+	tmp = get_next_line(fd);
+	if (tmp == NULL)
+		break;
+	printf("%s", tmp);
+	free(tmp);
+	tmp = NULL;
 	}
 	close(fd);
 	return (0);

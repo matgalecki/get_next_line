@@ -72,7 +72,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	str[i + j] = '\0';
-	/*free((void *)(s1));*/
 	return (str);
 }
 
